@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>春晚票务扫描系统</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        #qr-video {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border: 2px solid #333;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        #result {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .info {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>春晚票务扫描</h1>
+        <div class="info">
+            <p>请将手机摄像头对准票上的二维码进行扫描</p>
+        </div>
+        
+        <video id="qr-video" autoplay playsinline></video>
+        
+        <div id="result"></div>
+        
+        <!-- 调试日志显示区域 -->
+        <div class="info">
+            <h3>调试信息</h3>
+            <div id="debug-log" style="max-height: 200px; overflow-y: auto; background: #000; color: #0f0; padding: 10px; font-family: monospace; font-size: 12px;"></div>
+        </div>
+        
+        <button id="start-btn">开始扫描</button>
+        <button id="stop-btn">停止扫描</button>
+        <button id="clear-log-btn">清除日志</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/socket.io@4.5.1/client-dist/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <script>
+        // 连接Socket.IO
+        console.log('正在连接Socket.IO服务器...');
+        const socket = io(window.location.origin);
+        
+        const video = document.getElementById('qr-video');
+        const resultDiv = document.getElementById('result');
+        const startBtn = document.getElementById('start-btn');
+        const stopBtn = document.getElementById('stop-btn');
+        
+        let scanning = false;
+        let stream = null;
+        let lastScannedId = null;
+        let lastScanTime = 0;
+        const SCAN_INTERVAL = 3000; // 增加扫描间隔，减少资源消耗
+        const debugLog = document.getElementById('debug-log');
+        const clearLogBtn = document.getElementById('clear-log-btn');
+        
+        // 自定义日志函数，同时记录到控制台和页面
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logMessage = `[${timestamp}] ${message}`;
+            
+            // 记录到控制台
+            if (type === 'error') {
+                console.error(logMessage);
+            } else if (type === 'warning') {
+                console.warn(logMessage);
+            } else {
+                console.log(logMessage);
+            }
+            
+            // 显示在页面上
+            if (debugLog) {
+                const logDiv = document.createElement('div');
+                logDiv.style.margin = '2px 0';
+                logDiv.style.padding = '2px 4px';
+                
+                // 根据日志类型设置颜色
+                if (type === 'error') {
+                    logDiv.style.color = '#f00';
+                    logDiv.style.backgroundColor = '#ffebee';
+                } else if (type === 'warning') {
+                    logDiv.style.color = '#ff8c00';
+                    logDiv.style.backgroundColor = '#fff3e0';
+                } else {
+                    logDiv.style.color = '#0f0';
+                }
+                
+                logDiv.textContent = logMessage;
+                debugLog.appendChild(logDiv);
+                
+                // 自动滚动到底部
+                debugLog.scrollTop = debugLog.scrollHeight;
+                
+                // 限制日志条目数量
+                while (debugLog.children.length > 50) {
+                    debugLog.removeChild(debugLog.firstChild);
+                }
+            }
+        }
+        
+        // Socket.IO连接状态监听
+        socket.on('connect', () => {
+            log('Socket.IO连接成功');
+            showResult('已连接到服务器', 'info');
+        });
+        
+        socket.on('disconnect', () => {
+            log('Socket.IO连接断开');
+            showResult('与服务器断开连接', 'error');
+        });
+        
+        socket.on('connect_error', (error) => {
+            log('Socket.IO连接错误: ' + error, 'error');
+            showResult('连接服务器失败', 'error');
+        });
+        
+        // 请求摄像头权限并开始扫描
+        async function startScanning() {
+            try {
+                log('=== 开始扫描流程 ===');
+                
+                // 停止之前可能存在的摄像头流
+                if (stream) {
+                    log('停止之前的摄像头流...');
+                    stream.getTracks().forEach(track => track.stop());
+                    stream = null;
+                }
+                
+                log('请求摄像头访问...');
+                
+                // 检查API可用性
+                if (!navigator.mediaDevices) {
+                    log('navigator.mediaDevices API不可用', 'error');
+                    showResult('浏览器不支持摄像头访问API', 'error');
+                    return;
+                }
+                
+                if (!navigator.mediaDevices.getUserMedia) {
+                    log('getUserMedia方法不可用', 'error');
+                    showResult('浏览器不支持摄像头访问', 'error');
+                    return;
+                }
+                
+                // 使用更详细的摄像头配置，提高兼容性并降低资源消耗
+                const constraints = {
+                    video: {
+                        facingMode: { ideal: "environment" }, // 优先使用后置摄像头
+                        width: { ideal: 640 },  // 降低分辨率以减少手机资源消耗
+                        height: { ideal: 480 },
+                        frameRate: { ideal: 15 } // 降低帧率以减少资源消耗
+                    },
+                    audio: false
+                };
+                
+                // 尝试详细配置，如果失败则回退到简化配置
+                try {
+                    log('尝试使用详细摄像头配置...');
+                    stream = await navigator.mediaDevices.getUserMedia(constraints);
+                    log('详细配置成功');
+                } catch (detailedError) {
+                    log('详细配置失败，尝试简化配置: ' + detailedError, 'warning');
+                    
+                    // 回退到简化配置
+                    try {
+                        stream = await navigator.mediaDevices.getUserMedia({ 
+                            video: true 
+                        });
+                        log('简化配置成功');
+                    } catch (simpleError) {
+                        log('所有摄像头配置尝试失败: ' + simpleError, 'error');
+                        throw simpleError;
+                    }
+                }
+                
+                // 设置视频源
+                video.srcObject = stream;
+                
+                // 等待视频准备就绪
+                await new Promise((resolve) => {
+                    video.onloadedmetadata = () => {
+                        log('视频准备就绪');
+                        resolve();
+                    };
+                });
+                
+                // 尝试播放视频
+                try {
+                    await video.play();
+                } catch (playError) {
+                    log('视频播放失败，尝试静音播放: ' + playError, 'warning');
+                    video.muted = true;
+                    await video.play();
+                }
+                
+                // 开始扫描
+                scanning = true;
+                scanFrame();
+                
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+                showResult('扫描已开始', 'info');
+                
+            } catch (error) {
+                log('摄像头访问失败: ' + error, 'error');
+                showResult('无法访问摄像头: ' + error.message, 'error');
+            }
+        }
+        
+        // 停止扫描
+        function stopScanning() {
+            console.log('停止扫描');
+            scanning = false;
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+            
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            showResult('扫描已停止', 'info');
+        }
+        
+        // QR码扫描优化
+        function scanFrame() {
+            if (!scanning || !stream) return;
+            
+            if (video.readyState >= video.HAVE_METADATA) {
+                try {
+                    const canvas = document.createElement('canvas');
+                    const width = Math.min(video.videoWidth, 400); // 降低处理尺寸以减少手机资源消耗
+                    const height = Math.min(video.videoHeight, 300);
+                    
+                    canvas.width = width;
+                    canvas.height = height;
+                    
+                    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+                    ctx.drawImage(video, 0, 0, width, height);
+                    
+                    const imageData = ctx.getImageData(0, 0, width, height);
+                    const code = jsQR(imageData.data, width, height, {
+                        inversionAttempts: 'dontInvert',
+                    });
+                    
+                    if (code && code.data) {
+                        const ticketId = code.data.trim();
+                        const currentTime = Date.now();
+                        
+                        // 防止重复扫描
+                        if (ticketId !== lastScannedId || currentTime - lastScanTime > SCAN_INTERVAL) {
+                            console.log('识别到二维码:', ticketId);
+                            showResult('正在验证...', 'warning');
+                            
+                            socket.emit('scan_ticket', { 
+                                ticket_id: ticketId,
+                                scan_time: new Date().toISOString()
+                            });
+                            
+                            lastScannedId = ticketId;
+                            lastScanTime = currentTime;
+                        }
+                    }
+                } catch (error) {
+                    console.error('扫描处理错误:', error);
+                }
+            }
+            
+            requestAnimationFrame(scanFrame);
+        }
+        
+        // 显示结果
+        function showResult(message, type) {
+            resultDiv.textContent = message;
+            resultDiv.className = type;
+            console.log('结果显示:', message, type);
+        }
+        
+        // 事件监听器
+        startBtn.addEventListener('click', startScanning);
+        stopBtn.addEventListener('click', stopScanning);
+        
+        // Socket.IO事件处理
+        socket.on('ticket_found', (data) => {
+            console.log('服务器返回: 票有效', data);
+            showResult(`欢迎 ${data.name}！`, 'success');
+        });
+        
+        socket.on('ticket_not_found', (data) => {
+            console.log('服务器返回: 票无效', data);
+            showResult(data.message, 'error');
+        });
+        
+        socket.on('ticket_already_checked', (data) => {
+            console.log('服务器返回: 票已检查', data);
+            showResult(data.message, 'warning');
+        });
+        
+        // 添加信息类样式
+        const style = document.createElement('style');
+        style.textContent = `
+            .info {
+                background-color: #d1ecf1;
+                color: #0c5460;
+                border: 1px solid #bee5eb;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

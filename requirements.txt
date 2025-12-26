@@ -1,0 +1,10 @@
+qrcode[pil]
+pyzbar
+opencv-python
+flask
+flask-socketio
+numpy
+pandas
+cryptography
+eventlet
+gunicorn
