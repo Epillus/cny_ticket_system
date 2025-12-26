@@ -3,7 +3,6 @@ from flask_socketio import SocketIO, emit
 import pandas as pd
 import os
 import time
-import ssl
 
 
 app = Flask(__name__)
@@ -156,14 +155,8 @@ def get_today_attendees():
     return jsonify(today_df[['ticket_id', 'name', 'checkin_time']].to_dict('records'))
 
 if __name__ == '__main__':
-    # 使用SSL证书运行HTTPS服务器，解决IP地址访问时摄像头API不可用问题
-    ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
-    ssl_context.load_cert_chain('ssl/cert.pem', 'ssl/key.pem')
-    ssl_context.set_ciphers('DEFAULT@SECLEVEL=1')  # 降低安全级别以提高兼容性
-    ssl_context.check_hostname = False  # 关闭主机名验证以解决证书未知问题
-    ssl_context.verify_mode = ssl.CERT_NONE  # 不验证客户端证书
+    port = int(os.environ.get('PORT', 5000))
     socketio.run(app, 
-                 host='0.0.0.0',  # 允许局域网访问
-                 port=5002, 
-                 debug=True,
-                 ssl_context=ssl_context)  # 使用生成的SSL证书
+                 host='0.0.0.0', 
+                 port=port, 
+                 debug=False) 
