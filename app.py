@@ -8,7 +8,7 @@ import time
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 # 配置Socket.IO支持CORS
-socketio = SocketIO(app, cors_allowed_origins='*')
+socketio = SocketIO(app, cors_allowed_origins='*',async_mode='threading')
 
 # 添加设备连接管理
 connected_devices = {}
