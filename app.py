@@ -44,7 +44,7 @@ CHECKED_TICKETS_CSV = 'data/checked_tickets.csv'
 # 确保数据文件存在
 if not os.path.exists(TICKETS_CSV):
     # 创建空的票数据文件
-    df = pd.DataFrame(columns=['ticket_id', 'name', 'status', 'checkin_time'])
+    df = pd.DataFrame(columns=['ticket_id', 'email', 'name', 'status', 'checkin_time'])
     df.to_csv(TICKETS_CSV, index=False)
 
 if not os.path.exists(CHECKED_TICKETS_CSV):

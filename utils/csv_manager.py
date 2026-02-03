@@ -101,6 +101,7 @@ if __name__ == "__main__":
     sample_data = {
         'ticket_id': 'T20250001',
         'name': '张三',
+        'email': 'xx@gmail.com',
         'status': 'unchecked',
         'checkin_time': ''
     }

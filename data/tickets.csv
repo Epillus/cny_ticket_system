@@ -1,101 +1,122 @@
-ticket_id,name,status,checkin_time,qr_code_path
-T20250001,观众1,checked,2025-12-25 00:09:19,T20250001.png
-T20250002,观众2,unchecked,,T20250002.png
-T20250003,观众3,unchecked,,T20250003.png
-T20250004,观众4,unchecked,,T20250004.png
-T20250005,观众5,unchecked,,T20250005.png
-T20250006,观众6,unchecked,,T20250006.png
-T20250007,观众7,unchecked,,T20250007.png
-T20250008,观众8,unchecked,,T20250008.png
-T20250009,观众9,unchecked,,T20250009.png
-T20250010,观众10,unchecked,,T20250010.png
-T20250011,观众11,unchecked,,T20250011.png
-T20250012,观众12,unchecked,,T20250012.png
-T20250013,观众13,unchecked,,T20250013.png
-T20250014,观众14,unchecked,,T20250014.png
-T20250015,观众15,unchecked,,T20250015.png
-T20250016,观众16,unchecked,,T20250016.png
-T20250017,观众17,unchecked,,T20250017.png
-T20250018,观众18,unchecked,,T20250018.png
-T20250019,观众19,unchecked,,T20250019.png
-T20250020,观众20,unchecked,,T20250020.png
-T20250021,观众21,unchecked,,T20250021.png
-T20250022,观众22,unchecked,,T20250022.png
-T20250023,观众23,unchecked,,T20250023.png
-T20250024,观众24,unchecked,,T20250024.png
-T20250025,观众25,unchecked,,T20250025.png
-T20250026,观众26,unchecked,,T20250026.png
-T20250027,观众27,unchecked,,T20250027.png
-T20250028,观众28,unchecked,,T20250028.png
-T20250029,观众29,unchecked,,T20250029.png
-T20250030,观众30,unchecked,,T20250030.png
-T20250031,观众31,unchecked,,T20250031.png
-T20250032,观众32,unchecked,,T20250032.png
-T20250033,观众33,unchecked,,T20250033.png
-T20250034,观众34,unchecked,,T20250034.png
-T20250035,观众35,unchecked,,T20250035.png
-T20250036,观众36,unchecked,,T20250036.png
-T20250037,观众37,unchecked,,T20250037.png
-T20250038,观众38,unchecked,,T20250038.png
-T20250039,观众39,unchecked,,T20250039.png
-T20250040,观众40,unchecked,,T20250040.png
-T20250041,观众41,unchecked,,T20250041.png
-T20250042,观众42,unchecked,,T20250042.png
-T20250043,观众43,unchecked,,T20250043.png
-T20250044,观众44,unchecked,,T20250044.png
-T20250045,观众45,unchecked,,T20250045.png
-T20250046,观众46,unchecked,,T20250046.png
-T20250047,观众47,unchecked,,T20250047.png
-T20250048,观众48,unchecked,,T20250048.png
-T20250049,观众49,unchecked,,T20250049.png
-T20250050,观众50,unchecked,,T20250050.png
-T20250051,观众51,unchecked,,T20250051.png
-T20250052,观众52,unchecked,,T20250052.png
-T20250053,观众53,unchecked,,T20250053.png
-T20250054,观众54,unchecked,,T20250054.png
-T20250055,观众55,unchecked,,T20250055.png
-T20250056,观众56,unchecked,,T20250056.png
-T20250057,观众57,unchecked,,T20250057.png
-T20250058,观众58,unchecked,,T20250058.png
-T20250059,观众59,unchecked,,T20250059.png
-T20250060,观众60,unchecked,,T20250060.png
-T20250061,观众61,unchecked,,T20250061.png
-T20250062,观众62,unchecked,,T20250062.png
-T20250063,观众63,unchecked,,T20250063.png
-T20250064,观众64,unchecked,,T20250064.png
-T20250065,观众65,unchecked,,T20250065.png
-T20250066,观众66,unchecked,,T20250066.png
-T20250067,观众67,unchecked,,T20250067.png
-T20250068,观众68,unchecked,,T20250068.png
-T20250069,观众69,unchecked,,T20250069.png
-T20250070,观众70,unchecked,,T20250070.png
-T20250071,观众71,unchecked,,T20250071.png
-T20250072,观众72,unchecked,,T20250072.png
-T20250073,观众73,unchecked,,T20250073.png
-T20250074,观众74,unchecked,,T20250074.png
-T20250075,观众75,unchecked,,T20250075.png
-T20250076,观众76,unchecked,,T20250076.png
-T20250077,观众77,unchecked,,T20250077.png
-T20250078,观众78,unchecked,,T20250078.png
-T20250079,观众79,unchecked,,T20250079.png
-T20250080,观众80,unchecked,,T20250080.png
-T20250081,观众81,unchecked,,T20250081.png
-T20250082,观众82,unchecked,,T20250082.png
-T20250083,观众83,unchecked,,T20250083.png
-T20250084,观众84,unchecked,,T20250084.png
-T20250085,观众85,unchecked,,T20250085.png
-T20250086,观众86,unchecked,,T20250086.png
-T20250087,观众87,unchecked,,T20250087.png
-T20250088,观众88,unchecked,,T20250088.png
-T20250089,观众89,unchecked,,T20250089.png
-T20250090,观众90,unchecked,,T20250090.png
-T20250091,观众91,unchecked,,T20250091.png
-T20250092,观众92,unchecked,,T20250092.png
-T20250093,观众93,unchecked,,T20250093.png
-T20250094,观众94,unchecked,,T20250094.png
-T20250095,观众95,unchecked,,T20250095.png
-T20250096,观众96,unchecked,,T20250096.png
-T20250097,观众97,unchecked,,T20250097.png
-T20250098,观众98,unchecked,,T20250098.png
-T20250099,观众99,unchecked,,T20250099.png
-T20250100,观众100,unchecked,,T20250100.png
+﻿name,ticket_id,email,status,checkin_time
+test1,T3001,xx@gmail.com,unchecked,
+test2,T3002,xx@gmail.com,unchecked,
+test3,T3003,xx@gmail.com,unchecked,
+test4,T3004,xx@gmail.com,unchecked,
+test5,T3005,xx@gmail.com,unchecked,
+test6,T3006,xx@gmail.com,unchecked,
+test7,T3007,xx@gmail.com,unchecked,
+test8,T3008,xx@gmail.com,unchecked,
+test9,T3009,xx@gmail.com,unchecked,
+test10,T3010,xx@gmail.com,unchecked,
+test11,T3011,xx@gmail.com,unchecked,
+test12,T3012,xx@gmail.com,unchecked,
+test13,T3013,xx@gmail.com,unchecked,
+test14,T3014,xx@gmail.com,unchecked,
+test15,T3015,xx@gmail.com,unchecked,
+test16,T3016,xx@gmail.com,unchecked,
+test17,T3017,xx@gmail.com,unchecked,
+test18,T3018,xx@gmail.com,unchecked,
+test19,T3019,xx@gmail.com,unchecked,
+test20,T3020,xx@gmail.com,unchecked,
+test21,T3021,xx@gmail.com,unchecked,
+test22,T3022,xx@gmail.com,unchecked,
+test23,T3023,xx@gmail.com,unchecked,
+test24,T3024,xx@gmail.com,unchecked,
+test25,T3025,xx@gmail.com,unchecked,
+test26,T3026,xx@gmail.com,unchecked,
+test27,T3027,xx@gmail.com,unchecked,
+test28,T3028,xx@gmail.com,unchecked,
+test29,T3029,xx@gmail.com,unchecked,
+test30,T3030,xx@gmail.com,unchecked,
+test31,T3031,xx@gmail.com,unchecked,
+test32,T3032,xx@gmail.com,unchecked,
+test33,T3033,xx@gmail.com,unchecked,
+test34,T3034,xx@gmail.com,unchecked,
+test35,T3035,xx@gmail.com,unchecked,
+test36,T3036,xx@gmail.com,unchecked,
+test37,T3037,xx@gmail.com,unchecked,
+test38,T3038,xx@gmail.com,unchecked,
+test39,T3039,xx@gmail.com,unchecked,
+test40,T3040,xx@gmail.com,unchecked,
+test41,T3041,xx@gmail.com,unchecked,
+test42,T3042,xx@gmail.com,unchecked,
+test43,T3043,xx@gmail.com,unchecked,
+test44,T3044,xx@gmail.com,unchecked,
+test45,T3045,xx@gmail.com,unchecked,
+test46,T3046,xx@gmail.com,unchecked,
+test47,T3047,xx@gmail.com,unchecked,
+test48,T3048,xx@gmail.com,unchecked,
+PengDiwen,T4001,diwen001@e.ntu.edu.sg,unchecked,
+Chen Yiyang ,T4002,CHEN1959@e.ntu.edu.sg,unchecked,
+XU XINZHE,T4003,XXU044@e.ntu.edu.sg,unchecked,
+LIU SIQI,T4004,siqi009@e.ntu.edu.sg,unchecked,
+Jin Yuyang,T4005,yuyang005@e.ntu.edu.sg,unchecked,
+CHEN DONG-TING,T4006,DCHEN030@E.NTU.EDU.SG,unchecked,
+Ao Zhongjian,T4007,C250172@e.ntu.edu.sg,unchecked,
+郭龄允,T4008,guol0023@e.ntu.edu.sg,unchecked,
+Wang Tiantong,T4009,tiantong001@e.ntu.edu.sg,unchecked,
+Jinbo Zhu,T4010,zhujinbo1998@outlook.com,unchecked,
+Zhou Qingyan,T4011,E230167@e.ntu.edu.sg,unchecked,
+SHENG QIANYI,T4012,shengqianyi090@gmail.com,unchecked,
+冯子芸FENGZIYUN,T4013,ZIYUN002@e.ntu.edu.sg,unchecked,
+Hu Shengjie,T4014,shu021@e.ntu.edu.sg,unchecked,
+SOO XIN YI,T4015,SOOX0004@e.ntu.edu.sg,unchecked,
+Yang Jingxi,T4016,YANG1057@e.ntu.edu.sg,unchecked,
+Ren Junhao ,T4017,junhao002@e.ntu.edu.sg,unchecked,
+Liu Jialin,T4018,LIUJ0179@e.ntu.edu.sg,unchecked,
+Wang Nan,T4019,13811171918@163.com,unchecked,
+邰盎然 Tai Angran,T4020,TAIA0002@e.ntu.edu.sg,unchecked,
+Wang Tianning ,T4021,Wangtianning16@gmail.com,unchecked,
+LUO JIAYAO,T4022,LUOJ0037@e.ntu.edu.sg,unchecked,
+Robin Oo,T4023,roo001@e.ntu.edu.sg,unchecked,
+ZHANG KAIPENG,T4024,KAIPENG003@e.ntu.edu.sg,unchecked,
+张清源,T4025,p230031@e.ntu.edu.sg,unchecked,
+Zhou Meixin,T4026,mxzhou@ntu.edu.sg,unchecked,
+TANG JIAQI,T4027,TANG0636@e.ntu.edu.sg,unchecked,
+Dong Chengyu,T4028,DONG0171@e.ntu.edu.sg,unchecked,
+YUAN WEIMING,T4029,YUAN@e.ntu.edu.sg,unchecked,
+Wang Yu,T4030,yuwang@ntu.edu.sg,unchecked,
+Poon Wei Lok,T4031,wpoon003@e.ntu.edu.sg,unchecked,
+HE XINYU,T4032,XINYU005@e.ntu.edu.sg,unchecked,
+YANG CAN,T4033,yangcan1299@163.com,unchecked,
+Honglin Gao,T4034,HONGLIN001@e.ntu.edu.sg,unchecked,
+CHEN XINGPING,T4035,CHEN2026@e.ntu.edu.sg,unchecked,
+Meng Zihan,T4036,Meng0092@e.ntu.edu.sg,unchecked,
+HU Shengquan,T4037,h127429916@gmail.com,unchecked,
+YU ZECHENG,T4038,zecheng.yu@ntu.edu.sg,unchecked,
+Wang Luqiong ,T4039,NIE26.WL6439@e.ntu.edu.sg,unchecked,
+WangZixian,T4040,wzx18185133149@163.com,unchecked,
+ChenJingwen,T4041,N250001@e.ntu.edu.sg,unchecked,
+Liu Shuanglin ,T4042,LIUS0126@e.ntu.edu.sg,unchecked,
+Chen Rouxi,T4043,ROUXI001@e.ntu.edu.sg,unchecked,
+Wan Shijie ,T4044,SHIJIE003@e.ntu.edu.sg,unchecked,
+See Su Han,T4045,SEES0015@e.ntu.edu.sg,unchecked,
+Zhu Jiayu,T4046,ZH0045YU@e.ntu.edu.sg,unchecked,
+Wang Benquan,T4047,BENQUAN001@e.ntu.edu.sg,unchecked,
+孙宁 Sun Ning,T4048,NSUN001@e.ntu.edu.sg,unchecked,
+Tham Hsin Ee Esther,T4049,NIE26.THEE@e.ntu.edu.sg,unchecked,
+LI BINGZHEN,T4050,a731235515@gmail.com,unchecked,
+王奕璇,T4051,ZIYUN002@e.ntu.edu.sg,unchecked,
+方欣晴,T4052,FANG0153@e.ntu.edu.sg,unchecked,
+Guo Zilan,T4053,mmwan131421@gmail.com,unchecked,
+刘霁桐,T4054,LIUJ0159@e.ntu.edu.sg,unchecked,
+Zhang Huaixin,T4055,Hzhang091@e.ntu.edu.sg,unchecked,
+任思嘉,T4056,N2409985C@e.ntu.edu.sg,unchecked,
+周津辉,T4057,P240002@e.ntu.edu.sg,unchecked,
+Melvin Kher,T4058,melv0034@e.ntu.edu.sg,unchecked,
+刘蕊,T4059,N2505450D@e.ntu.edu.sg,unchecked,
+宫天琦,T4060,go0002qi@e.ntu.edu.sg,unchecked,
+李江缘,T4061,liji0098@e.ntu.edu.sg,unchecked,
+林宜之,T4062,ylim216@e.ntu.edu.sg,unchecked,
+乔元钰,T4063,c230176@e.ntu.edu.sg,unchecked,
+尉梦瑶,T4064,myu019@e.ntu.edu.sg,unchecked,
+徐子琼,T4065,xuzi0018@e.ntu.edu.sg,unchecked,
+唐思懿,T4066,C230120@e.ntu.edu.sg,unchecked,
+张清源,T4067,p230031@e.ntu.edu.sg,unchecked,
+柳傲然,T4068,aliu012@e.ntu.edu.sg,unchecked,
+陈昊鸣,T4069,chen1865@e.ntu.edu.sg,unchecked,
+张苗苗,T4070,mzhang049@e.ntu.edu.sg,unchecked,
+韩译萱,T4071,hany0042@e.ntu.edu.sg,unchecked,
+金添,T4072,jint0007@e.ntu.edu.sg ,unchecked,
+谢静芯,T4073,cchiah001@e.ntu.edu.sg,unchecked,
